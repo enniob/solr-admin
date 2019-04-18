@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { map } from 'rxjs/operators';
   templateUrl: './master.component.html',
   styleUrls: ['./master.component.scss']
 })
-export class MasterComponent {
+export class MasterComponent implements OnInit {
+  mode = 'std';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -17,4 +18,6 @@ export class MasterComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  ngOnInit() {
+  }
 }

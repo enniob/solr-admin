@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,
-    MatCardModule, MatProgressBarModule, MatDialogModule, MatGridListModule, MatSelectModule } from '@angular/material';
+         MatCardModule, MatProgressBarModule, MatDialogModule, MatGridListModule, MatSelectModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     declarations: [],
@@ -16,7 +18,9 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
         MatListModule,
         MatDialogModule,
         MatGridListModule,
-        MatSelectModule
+        MatSelectModule,
+        MatTableModule,
+        MatPaginatorModule
     ],
     exports: [
         LayoutModule,
@@ -29,7 +33,9 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
         MatProgressBarModule,
         MatDialogModule,
         MatGridListModule,
-        MatSelectModule
+        MatSelectModule,
+        MatTableModule,
+        MatPaginatorModule
     ]
 })
 export class MaterialModule { }

@@ -8,7 +8,7 @@ import { SolrSystemResponse } from '../../domain/solr-admin-info-system/solr-sys
 })
 export class SystemService extends SolrService {
 
-    path = '/solr/admin/info/system';
+    path = '/api/node/system';
 
   constructor(private http: HttpClient) {
       super();

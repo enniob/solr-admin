@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
                 console.error(err);
             }
         );
+
         this.metrics.getJvmData().subscribe(
             response => {
                 this.jvmMetrics = response.metrics['solr.jvm'];
@@ -63,6 +64,7 @@ export class DashboardComponent implements OnInit {
             err => { console.error(err); }
         );
     }
+
     processJvmMetrics(jvmMetrics: any): any {
         this.cpuUtilization = 100 * (jvmMetrics['os.systemCpuLoad'] / jvmMetrics['os.availableProcessors']);
         this.totalPhysicalMemory = jvmMetrics['os.totalPhysicalMemorySize'];

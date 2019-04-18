@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
+
+// SERVICES
+import { SolrNodeService } from '../../services/solr-node/solr-node.service';
 
 @Component({
   selector: 'app-logging',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoggingComponent implements OnInit {
 
-  constructor() { }
+  logHistory = new MatTableDataSource<any[]>([]);
+  displayedColumns: string[] = ['time', 'level', 'core', 'logger', 'message'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  constructor(private readonly solrNodeService: SolrNodeService) { }
 
   ngOnInit() {
+    this.getLogs();
   }
 
+  // PRIVATE FUNCTIONS
+  getLogs() {
+    this.solrNodeService.get('logging?since=0&wt=json').subscribe(response => {
+      console.log(response);
+      this.logHistory = new MatTableDataSource<any[]>(response['history']['docs']);
+      this.logHistory.paginator = this.paginator;
+    });
+  }
 }
